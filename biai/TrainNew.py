@@ -2,6 +2,7 @@ import os
 
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
 from keras.src.regularizers import regularizers
+from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Reshape
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
@@ -62,6 +63,12 @@ model.add(BatchNormalization())
 model.add(MaxPooling2D())
 
 model.add(Flatten())
+
+model.add(Reshape((72, 64)))
+model.add(LSTM(128, return_sequences=True, activation='tanh'))
+model.add(LSTM(64, return_sequences=False, activation='tanh'))
+
+
 model.add(Dense(512, activation='relu', kernel_regularizer=regularizers.L2(0.001)))
 model.add(Dropout(0.4))
 model.add(Dense(256, activation='relu', kernel_regularizer=regularizers.L2(0.001)))
