@@ -1,7 +1,9 @@
 import os
+import argparse
+
 
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
-from keras.src.regularizers import regularizers
+from keras import regularizers
 from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Reshape
 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
@@ -9,7 +11,16 @@ os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import tensorflow as tf
 from tensorflow.keras import Sequential
 import matplotlib.pyplot as plt
+print("Dostępne urządzenia:", tf.config.list_physical_devices())
 
+# Set up argument parser
+parser = argparse.ArgumentParser(description='Train and save a model.')
+parser.add_argument('--save_path', type=str, default='models/imageclassifier.keras',
+                    help='Path to save the trained model (default: models/imageclassifier.keras)')
+args = parser.parse_args()
+
+# Sprawdzenie, czy TensorFlow widzi GPU
+print("Czy TensorFlow korzysta z GPU:", tf.config.list_physical_devices('GPU'))
 
 data_dir = 'Data/zdj'
 
@@ -112,4 +123,5 @@ print(f'Test Accuracy: {test_accuracy}')
 # plt.show()
 
 #save
-model.save(os.path.join('models','imageclassifier.keras'))
+model.save(args.save_path)
+print(f'Model saved to: {args.save_path}')

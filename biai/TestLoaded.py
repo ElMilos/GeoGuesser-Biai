@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
@@ -13,11 +14,18 @@ train_data_dir = 'Data/zdj'
 train_data = tf.keras.utils.image_dataset_from_directory(train_data_dir, shuffle=True)
 train_data = train_data.map(lambda x, y: (x/255, y))
 class_names = sorted(os.listdir(train_data_dir))
-model = tf.keras.models.load_model('models/57dt_v4_class6.h5')
 
+parser = argparse.ArgumentParser(description='Train and save a model.')
+parser.add_argument('--model_name', type=str, default='models/imageclassifier.keras',
+                    help='Path to save the trained model (default: models/imageclassifier.keras)')
+model_name = parser.parse_args()
+model = tf.keras.models.load_model(model_name)
+
+parser = argparse.ArgumentParser(description='Train and save a model.')
+parser.add_argument('--img_path', type=str, default='Data/zdj/a.jpg',
+                    help='Path to save the trained model (default: Data/zdj/a.jpg')
+img_path = parser.parse_args()
 #test
-import cv2
-img_path = 'Data/zdj/a.jpg'
 
 img = Image.open(img_path)
 img = img.resize((256, 256))

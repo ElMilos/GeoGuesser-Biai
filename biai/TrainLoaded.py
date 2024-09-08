@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
@@ -26,7 +27,11 @@ test_data = test_data.map(lambda x, y: (x/255, y))
 #ilość klas
 num_classes = train_data.class_names
 num_classes = len(num_classes)
-model_name = 'models/57dt_v4_class6.h5'
+
+parser = argparse.ArgumentParser(description='Train and save a model.')
+parser.add_argument('--model_name', type=str, default='models/imageclassifier.keras',
+                    help='Path to save the trained model (default: models/imageclassifier.keras)')
+model_name = parser.parse_args()
 model = tf.keras.models.load_model(model_name)
 
 model.summary()
