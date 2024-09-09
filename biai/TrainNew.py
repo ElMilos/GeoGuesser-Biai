@@ -1,7 +1,7 @@
 import os
 import argparse
 
-
+from keras.src.callbacks import ModelCheckpoint
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
 from keras import regularizers
 from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Reshape
@@ -15,8 +15,8 @@ print("Dostępne urządzenia:", tf.config.list_physical_devices())
 
 # Set up argument parser
 parser = argparse.ArgumentParser(description='Train and save a model.')
-parser.add_argument('--save_path', type=str, default='models/imageclassifier.keras',
-                    help='Path to save the trained model (default: models/imageclassifier.keras)')
+parser.add_argument('--save_path', type=str, default='models/imageclassifier.h5',
+                    help='Path to save the trained model (default: models/imageclassifier.h5)')
 args = parser.parse_args()
 
 # Sprawdzenie, czy TensorFlow widzi GPU
@@ -47,6 +47,15 @@ train = data.take(train_data)
 val = data.skip(train_data).take(val_data)
 test = data.skip(train_data+val_data).take(test_data)
 
+# Callback do zapisu najlepszego modelu (na podstawie dokładności walidacji)
+model_checkpoint_callback = ModelCheckpoint(
+    filepath=args.save_path,       # Ścieżka do pliku
+    save_weights_only=False,       # Czy zapisać tylko wagi, czy cały model
+    monitor='val_accuracy',        # Monitorowana metryka, np. 'val_accuracy' (dokładność walidacji)
+    mode='max',                    # Tryb - chcemy maksymalizować dokładność
+    save_best_only=True,           # Zapisuj tylko najlepszy model
+    verbose=1                      # Wydruk informacji w trakcie zapisu
+)
 
 #ilość klas
 class_names = sorted(os.listdir(data_dir))
@@ -75,7 +84,7 @@ model.add(MaxPooling2D())
 
 model.add(Flatten())
 
-model.add(Reshape((72, 64)))
+model.add(Reshape((128, 64)))
 model.add(LSTM(128, return_sequences=True, activation='tanh'))
 model.add(LSTM(64, return_sequences=False, activation='tanh'))
 
@@ -93,7 +102,7 @@ model.summary()
 
 logdir = 'logs'
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
-hist = model.fit(train, epochs=10, validation_data=val, callbacks=[tensorboard_callback])
+hist = model.fit(train, epochs=40, validation_data=val, callbacks=[tensorboard_callback, model_checkpoint_callback])
 
 
 # wykresy
@@ -123,5 +132,5 @@ print(f'Test Accuracy: {test_accuracy}')
 # plt.show()
 
 #save
-model.save(args.save_path)
+#model.save(args.save_path)
 print(f'Model saved to: {args.save_path}')

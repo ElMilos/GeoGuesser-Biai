@@ -1,7 +1,7 @@
 import os
 
 from keras.src.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization, GlobalAveragePooling2D
-from keras.src.regularizers import regularizers
+from keras import regularizers
 from tensorflow.keras.layers import LSTM, Dense, Dropout, BatchNormalization, Reshape
 from tensorflow.keras import regularizers
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"

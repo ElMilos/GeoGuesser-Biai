@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98029733-1c1f-484d-b840-c7b82f482c65" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biai/TestLoaded.py" beforeDir="false" afterPath="$PROJECT_DIR$/biai/TestLoaded.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biai/TrainLoaded.py" beforeDir="false" afterPath="$PROJECT_DIR$/biai/TrainLoaded.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biai/TrainNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/biai/TrainNew.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biai/TrainNewLSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/biai/TrainNewLSTM.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
       <recent name="F:\GitHub\GeoGuesser-Biai\biai" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.TrainNew">
     <configuration name="TrainNew" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="GeoGuesser-Biai" />
       <option name="ENV_FILES" value="" />
@@ -123,9 +121,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.TrainNew" />
         <item itemvalue="Python.TrainNewLSTM" />
+        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
