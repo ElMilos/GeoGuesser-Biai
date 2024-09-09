@@ -95,7 +95,7 @@ model.add(Dense(256, activation='relu', kernel_regularizer=regularizers.L2(0.001
 model.add(Dropout(0.4))
 
 model.add(Dense(num_classes, activation='softmax'))
-
+#### Sprawdzić 2 inne optymalizatory adamax
 model.compile(optimizer='adam', loss=tf.losses.SparseCategoricalCrossentropy(), metrics=['accuracy'])
 model.summary()
 
