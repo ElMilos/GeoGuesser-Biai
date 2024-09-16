@@ -84,7 +84,7 @@ model.add(MaxPooling2D())
 
 model.add(Flatten())
 
-model.add(Reshape((128, 64)))
+model.add(Reshape((72, 64)))
 model.add(LSTM(128, return_sequences=True, activation='tanh'))
 model.add(LSTM(64, return_sequences=False, activation='tanh'))
 
@@ -96,13 +96,13 @@ model.add(Dropout(0.4))
 
 model.add(Dense(num_classes, activation='softmax'))
 #### Sprawdzić 2 inne optymalizatory adamax
-model.compile(optimizer='adam', loss=tf.losses.SparseCategoricalCrossentropy(), metrics=['accuracy'])
+model.compile(optimizer='adamax', loss=tf.losses.SparseCategoricalCrossentropy(), metrics=['accuracy'])
 model.summary()
 
 
 logdir = 'logs'
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
-hist = model.fit(train, epochs=40, validation_data=val, callbacks=[tensorboard_callback, model_checkpoint_callback])
+hist = model.fit(train, epochs=35, validation_data=val, callbacks=[tensorboard_callback, model_checkpoint_callback])
 
 
 # wykresy

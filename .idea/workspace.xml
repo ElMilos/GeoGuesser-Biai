@@ -7,8 +7,7 @@
     <list default="true" id="98029733-1c1f-484d-b840-c7b82f482c65" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biai/TrainNew.py" beforeDir="false" afterPath="$PROJECT_DIR$/biai/TrainNew.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biai/logs/train/events.out.tfevents.1725891716.DESKTOP-602DCUI.3156.0.v2" beforeDir="false" afterPath="$PROJECT_DIR$/biai/logs/train/events.out.tfevents.1725891716.DESKTOP-602DCUI.3156.0.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biai/logs/validation/events.out.tfevents.1725891862.DESKTOP-602DCUI.3156.1.v2" beforeDir="false" afterPath="$PROJECT_DIR$/biai/logs/validation/events.out.tfevents.1725891862.DESKTOP-602DCUI.3156.1.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biai/TrainNewLSTM.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biai/models/imageclassifier.h5" beforeDir="false" afterPath="$PROJECT_DIR$/biai/models/imageclassifier.h5" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
