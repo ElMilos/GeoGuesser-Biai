@@ -57,3 +57,16 @@ python TrainLoaded.py --model_name models/my_model.keras
 
 # Run prediction on a single image
 python TestLoaded.py --model_name models/my_model.keras --img_path Data/example.jpg
+```
+## 📊 Results
+Final CNN+LSTM hybrid architecture reached up to 80% test accuracy
+
+Experiments included:
+
+CNN-only models (baseline)
+
+Overfitting countermeasures: L2 regularization, dropout, batch normalization
+
+LSTM and hybrid CNN+LSTM model comparisons
+
+Multiple optimizers: Adam, AdaMax, AdaDelta
