@@ -1,4 +1,4 @@
-# 🌍 GeoGuesser BIAI – Biologically Inspired AI for Geolocation
+# 🌍Guessing geographical location based on landscape image – Biologically Inspired AI for Geolocation
 
 A deep learning project that aims to **predict the country of origin of a landscape photo** using image recognition techniques inspired by biological systems.
 
